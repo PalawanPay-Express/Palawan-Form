@@ -29,6 +29,18 @@
       align-items: center;
       flex-direction: column;
       min-height: 100vh;
+      position: relative;
+    }
+    .background-logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: auto;
+      max-width: none;
+      opacity: 0.8;
+      z-index: 0;
     }
     .container {
       background: rgba(255, 255, 255, 0.95);
@@ -39,6 +51,8 @@
       max-width: 400px;
       margin: 20px;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
     .logo {
       width: 100%;
@@ -79,10 +93,14 @@
       font-size: 14px;
       margin-top: 20px;
       padding-bottom: 10px;
+      z-index: 1;
+      position: relative;
     }
   </style>
 </head>
 <body>
+  <img class="background-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_cxoYkt5zhhhKk_fc15G23cx6Nb3qx_4m6A&s" alt="Background Logo">
+
   <div class="container" id="page1">
     <img src="https://www.ecpay.com.ph/sites/default/files/2023-12/PALAWANPAY_COMPANY%20LOGO.png" alt="PalawanPay Logo" class="logo" />
     <h2>PalawanPay Form</h2>
